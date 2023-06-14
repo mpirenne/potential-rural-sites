@@ -1,10 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Website</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <style>
+    html,
+    body,
+    #map {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to My Website!</h1>
-  <p>This is a sample paragraph.</p>
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    var map = L.map('map').setView([52.4760, -71.8258], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data &copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    var locations = [
+      {
+        name: "CLSC de Landrienne",
+        latlng: [48.7548, -77.5273],
+        info: "Information about CLSC de Landrienne",
+        image: "clsc_landrienne.jpg"
+      },
+      {
+        name: "CLSC de Rouyn-Noranda",
+        latlng: [48.2386, -79.0289],
+        info: "Information about CLSC de Rouyn-Noranda",
+        image: "clsc_rouyn_noranda.jpg"
+      },
+      {
+        name: "CLSC de Saint-Félix-de-Dalquier",
+        latlng: [48.4073, -78.6101],
+        info: "Information about CLSC de Saint-Félix-de-Dalquier",
+        image: "clsc_saint_felix_de_dalquier.jpg"
+      },
+      {
+        name: "CLSC de Beaucanton",
+        latlng: [48.5614, -77.6028],
+        info: "Information about CLSC de Beaucanton",
+        image: "clsc_beaucanton.jpg"
+      },
+      {
+        name: "CLSC de Palmarolle",
+        latlng: [48.5619, -78.8769],
+        info: "Information about CLSC de Palmarolle",
+        image: "clsc_palmarolle.jpg"
+      },
+      {
+        name: "CLSC de Latulipe",
+        latlng: [48.5091, -77.6806],
+        info: "Information about CLSC de Latulipe",
+        image: "clsc_latulipe.jpg"
+      },
+      {
+        name: "CLSC de Berry",
+        latlng: [48.6127, -78.5421],
+        info: "Information about CLSC de Berry",
+        image: "clsc_berry.jpg"
+      },
+      {
+        name: "CLSC de Saint-Mathieu-d’Harricana",
+        latlng: [48.4834, -77.4771],
+        info: "Information about CLSC de Saint-Mathieu-d’Harricana",
+        image: "clsc_saint_mathieu_dharricana.jpg"
+      },
+      {
+        name: "CLSC de Saint-Dominique-du-Rosaire",
+        latlng: [48.3638, -78.5501],
+        info: "Information about CLSC de Saint-Dominique-du-Rosaire",
+        image: "clsc_saint_dominique_du_rosaire.jpg"
+      },
+      {
+        name: "CLSC de Témiscaming-Kipawa",
+        latlng: [46.7222, -79.0667],
+        info: "Information about CLSC de Témiscaming-Kipawa",
+        image: "clsc_temiscaming_kipawa.jpg"
+      },
+      {
+        name: "CLSC de Saint-Chrysostome",
+        latlng: [45.2173, -73.7831],
+        info: "Information about CLSC de Saint-Chrysostome",
+        image: "clsc_saint_chrysostome.jpg"
+     },
+     {
+        name: "CLSC de Beauharnois",
+        latlng: [45.3154, -73.8757],
+        info: "Information about CLSC de Beauharnois",
+        image: "clsc_beauharnois.jpg"
+    },
+    {
+        name: "CLSC de Saint-Polycarpe",
+        latlng: [45.2763, -74.2808],
+        info: "Information about CLSC de Saint-Polycarpe",
+        image: "clsc_saint_polycarpe.jpg"
+    },
+    {
+        name: "CLSC de Kateri",
+        latlng: [45.3335, -73.7262],
+        info: "Information about CLSC de Kateri",
+        image: "clsc_kateri.jpg"
+    },
+    {
+        name: "CLSC de Chateauguay",
+        latlng: [45.3683, -73.7344],
+        info: "Information about CLSC de Chateauguay",
+        image: "clsc_chateauguay.jpg"
+    },
+    {
+        name: "NEMASKA COMMUNITY MIYUPIMAATISIIUN CENTRE (CMC)",
+        latlng: [51.683806, -76.254629],
+        info: "Information about NEMASKA COMMUNITY MIYUPIMAATISIIUN CENTRE (CMC)",
+        image: "nemaska_cmc.jpg"
+    },
+    {
+        name: "Matagami Hospital",
+        latlng: [49.7545, -77.6329],
+        info: "Information about Matagami Hospital",
+        image: "matagami_hospital.jpg"
+    }
+ ];
+
+ locations.forEach(function (location) {
+    var marker = L.marker(location.latlng).addTo(map);
+    marker.bindPopup('<h3>' + location.name + '</h3><img src="' + location.image + '" width="200px"><p>' + location.info + '</p>');
+});
+  </script>
 </body>
 </html>
